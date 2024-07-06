@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: bd_Products
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: abc123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - postgres_network
+
+volumes:
+  postgres_data:
+
+networks:
+  postgres_network:
+
+  # para correr: docker-compose up -d
+  # acceder a CLI mongo: docker exec -it mongodb mongosh
